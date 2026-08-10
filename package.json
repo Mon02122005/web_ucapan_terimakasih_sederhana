@@ -1,0 +1,13 @@
+{
+  "name": "ungkapan-terima-kasih",
+  "version": "1.0.0",
+  "description": "Website ucapan terima kasih untuk dosen pembimbing",
+  "main": "index.html",
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "watch": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
