@@ -4,282 +4,270 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <link rel="stylesheet" href="./dist/output.css" />
-    <link rel="stylesheet" href="style/style.css" />
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
-    <style>
+
     
-    </style>
+
 </head>
-<body class="font-body-md text-body-md">
-    <!-- Top Navigation Bar -->
-    <nav class="w-full sticky top-0 z-50 bg-surface dark:bg-surface-container border-b border-outline-variant/30 transition-all duration-300" id="navbar">
-        <div class="flex flex-wrap justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-4">
-            <span class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">Ungkapan Terima Kasih</span>
-
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-8 items-center">
-                <a class="text-primary font-bold border-b-2 border-secondary font-body-md text-body-md hover:text-secondary transition-colors duration-300" href="#introduction">Pengantar</a>
-                <a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary transition-colors duration-300" href="#supervisor-1">Pembimbing I</a>
-                <a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary transition-colors duration-300" href="#supervisor-2">Pembimbing II</a>
-                <a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary transition-colors duration-300" href="#closing">Penutup</a>
-            </div>
-
-            <!-- Mobile Menu Toggle Button -->
-            <button id="menuToggle" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-surface-container-high transition-colors duration-200" aria-label="Toggle menu">
-                <span id="menuIcon" class="material-symbols-outlined text-primary text-3xl">menu</span>
-            </button>
+<body>
+    <!-- ===== LOADING SCREEN DENGAN PROGRESS ===== -->
+    <div id="loadingScreen">
+        <!-- logo-->
+        <img src="./assets/image/logo_ucapan.png" alt="Logo" class="loading-logo-img" />
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Memuat Konten</div>
+        <div class="loading-progress-container">
+            <div class="loading-progress-bar" id="progressBar"></div>
         </div>
-
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobileMenu" class="mobile-menu md:hidden bg-surface dark:bg-surface-container border-t border-outline-variant/30">
-            <div class="flex flex-col px-margin-mobile py-4 space-y-4">
-                <a class="text-primary font-bold border-b-2 border-secondary font-body-md text-body-md py-2 hover:text-secondary transition-colors duration-300" href="#introduction">Pengantar</a>
-                <a class="text-on-surface-variant font-body-md text-body-md py-2 hover:text-secondary transition-colors duration-300" href="#supervisor-1">Pembimbing I</a>
-                <a class="text-on-surface-variant font-body-md text-body-md py-2 hover:text-secondary transition-colors duration-300" href="#supervisor-2">Pembimbing II</a>
-                <a class="text-on-surface-variant font-body-md text-body-md py-2 hover:text-secondary transition-colors duration-300" href="#closing">Penutup</a>
-            </div>
+        <div class="loading-percent" id="progressPercent">0%</div>
+        <div class="loading-dots">
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
         </div>
-    </nav>
+    </div>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="min-h-[819px] flex flex-col justify-center items-center text-center px-6 py-section-gap max-w-container-max mx-auto" id="introduction">
-            <div class="animate-fade-in-up">
-                <span class="font-label-caps text-label-caps text-secondary mb-4 block tracking-[0.2em]">DEDIKASI &amp; PENGHARGAAN</span>
-                <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-8 max-w-3xl mx-auto">
-                    Terima Kasih, Bapak/Ibu Dosen Pembimbing
-                </h1>
-                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
-                    Sebuah bentuk apresiasi atas bimbingan, kesabaran, dan ilmu yang telah diberikan selama perjalanan akademik ini. Tanpa arahan Anda, pencapaian ini tidak akan pernah sama.
-                </p>
-                <div class="academic-divider mt-12"></div>
+    <!-- ===== MAIN CONTENT ===== -->
+    <div id="mainContent" style="display: none; opacity: 0; transition: opacity 0.8s ease;">
+        <!-- Top Navigation Bar -->
+        <nav class="w-full sticky top-0 z-50 bg-surface dark:bg-surface-container border-b border-outline-variant/30 transition-all duration-300" id="navbar">
+            <div class="flex flex-wrap justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-4">
+                <span class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">Ungkapan Terima Kasih</span>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a class="text-primary font-bold border-b-2 border-secondary font-body-md text-body-md hover:text-secondary transition-colors duration-300" href="#introduction">Pengantar</a>
+                    <a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary transition-colors duration-300" href="#supervisor-1">Pembimbing I</a>
+                    <a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary transition-colors duration-300" href="#supervisor-2">Pembimbing II</a>
+                    <a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary transition-colors duration-300" href="#closing">Penutup</a>
+                </div>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button id="menuToggle" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-surface-container-high transition-colors duration-200" aria-label="Toggle menu">
+                    <span id="menuIcon" class="material-symbols-outlined text-primary text-3xl">menu</span>
+                </button>
             </div>
-        </section>
 
-        <!-- Supervisor I Section -->
-        <section class="py-section-gap bg-surface-container-low/30" id="supervisor-1">
-            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-                <div class="grid md:grid-cols-12 gap-12 items-center">
-                    <div class="md:col-span-5 order-2 md:order-1">
-                        <div class="relative p-2 bg-white border border-outline-variant/30 shadow-sm">
-                            <div class="aspect-[3/4] overflow-hidden bg-surface-container">
-                                <img alt="Dosen Pembimbing I" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDadlT27NT9nYMxyHc01_nY16JWmEuwQvVWsFmw1AokD6lznh5sFJ_qx2PSOhHCgTsPIU2m0jXxpBLuhaa_zvJOcQGtHZBg49QZjcR4sCqqpvLZcFZbGU8oUmdfZRWKn2ImkwIDjkEsCUa9jPmjZHz813HXYF7DRzae71Grn3AYCdD2Y8uoKnra1L_mhTl3g-KGnBYdKKAfZD1afCxRbcOGCHhZRYCjX2C78DJeOMJx-bhXNjrwbZVR-tfws9uIykDK7pDGrJSV_GI" />
-                            </div>
-                            <div class="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-secondary"></div>
-                        </div>
-                    </div>
-                    <div class="md:col-span-7 order-1 md:order-2">
-                        <span class="font-label-caps text-label-caps text-secondary uppercase mb-2 block">Dosen Pembimbing Utama</span>
-                        <h2 class="font-headline-md text-headline-md text-primary mb-6">Kepada Dosen Pembimbing I</h2>
-                        <h3 class="font-body-lg text-body-lg font-bold text-on-surface mb-8">[Nama Dosen Pembimbing 1]</h3>
-                        <div class="space-y-6 text-on-surface-variant leading-loose italic font-quote-text text-quote-text border-l-4 border-secondary/30 pl-8 py-2">
-                            "Terima kasih atas bimbingan yang sangat fundamental. Arahan Bapak/Ibu bukan sekadar instruksi teknis, melainkan pembentukan pola pikir kritis yang akan saya bawa seumur hidup. Kesabaran Anda dalam menghadapi keraguan saya adalah hadiah terbesar dalam studi ini."
-                        </div>
-                        <div class="mt-8 flex items-center space-x-2 text-secondary">
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
-                            <span class="font-label-caps text-label-caps">Mentor &amp; Inisiator</span>
-                        </div>
-                    </div>
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobileMenu" class="mobile-menu md:hidden bg-surface dark:bg-surface-container border-t border-outline-variant/30">
+                <div class="flex flex-col px-margin-mobile py-4 space-y-4">
+                    <a class="text-primary font-bold border-b-2 border-secondary font-body-md text-body-md py-2 hover:text-secondary transition-colors duration-300" href="#introduction">Pengantar</a>
+                    <a class="text-on-surface-variant font-body-md text-body-md py-2 hover:text-secondary transition-colors duration-300" href="#supervisor-1">Pembimbing I</a>
+                    <a class="text-on-surface-variant font-body-md text-body-md py-2 hover:text-secondary transition-colors duration-300" href="#supervisor-2">Pembimbing II</a>
+                    <a class="text-on-surface-variant font-body-md text-body-md py-2 hover:text-secondary transition-colors duration-300" href="#closing">Penutup</a>
                 </div>
             </div>
-        </section>
+        </nav>
 
-        <!-- Academic Quote / Break -->
-        <section class="py-24 text-center">
-            <div class="max-w-3xl mx-auto px-6">
-                <span class="material-symbols-outlined text-secondary text-4xl mb-6">format_quote</span>
-                <p class="font-headline-sm text-headline-sm text-primary italic leading-relaxed">
-                    "Seorang guru yang baik tidak hanya memberikan jawaban, tetapi menanamkan pertanyaan yang akan menuntun siswanya menuju kebenaran."
-                </p>
-                <div class="academic-divider mt-8"></div>
-            </div>
-        </section>
-
-        <!-- Supervisor II Section -->
-        <section class="py-section-gap" id="supervisor-2">
-            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-                <div class="grid md:grid-cols-12 gap-12 items-center">
-                    <div class="md:col-span-7 order-2 md:order-1">
-                        <span class="font-label-caps text-label-caps text-secondary uppercase mb-2 block">Dosen Pembimbing Pendamping</span>
-                        <h2 class="font-headline-md text-headline-md text-primary mb-6">Kepada Dosen Pembimbing II</h2>
-                        <h3 class="font-body-lg text-body-lg font-bold text-on-surface mb-8">[Nama Dosen Pembimbing 2]</h3>
-                        <div class="space-y-6 text-on-surface-variant leading-loose italic font-quote-text text-quote-text border-r-4 border-secondary/30 pr-8 py-2 text-right">
-                            "Masukan-masukan konstruktif dan dukungan moral yang Anda berikan adalah penyemangat di saat-saat tersulit. Terima kasih telah membantu saya melihat detail yang terlewatkan dan mendorong saya untuk melampaui batas kemampuan saya sendiri."
-                        </div>
-                        <div class="mt-8 flex items-center justify-end space-x-2 text-secondary">
-                            <span class="font-label-caps text-label-caps">Penyemangat &amp; Kritikus Bijak</span>
-                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">psychology</span>
-                        </div>
-                    </div>
-                    <div class="md:col-span-5 order-1 md:order-2">
-                        <div class="relative p-2 bg-white border border-outline-variant/30 shadow-sm">
-                            <div class="aspect-[3/4] overflow-hidden bg-surface-container">
-                                <img alt="Dosen Pembimbing II" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9m1wDv7ohvoArJwdvmhSFj_KO2Xs8Wf_24dtHxvXvIR-17m-AfFv68NjgdYjTeKe8yylOZhushgD66QF3K6_GVLtbZNGoiyuCax76AKloCfHQgPbcuWDY7MREdOVHeJIoHcVpUBvu3KFmGTY8vCpRgsn44HOaXJRMGN6ajVEdwQePzPn1xQbFFOa3pHYeZzGEaKpcJ41lhP0IG2awd08lxGRbXdL6UWptn02Bl89elWX2iTodvkODArZ_lqYiiaHx5tGx0f4vS-g" />
-                            </div>
-                            <div class="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-secondary"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Closing Section -->
-        <section class="py-section-gap bg-primary-container text-on-primary" id="closing">
-            <div class="max-w-3xl mx-auto px-6 text-center">
-                <span class="font-label-caps text-label-caps text-secondary-fixed mb-6 block tracking-widest">PENUTUP</span>
-                <h2 class="font-headline-md text-headline-md mb-8">Sebuah Doa &amp; Harapan</h2>
-                <p class="font-body-lg text-body-lg text-on-primary-container leading-relaxed mb-16">
-                    Semoga segala ilmu yang telah diberikan menjadi amal jariyah yang tak terputus. Saya berharap dapat meneruskan semangat akademis ini dalam langkah karir saya selanjutnya, membawa integritas yang telah Anda contohkan.
-                </p>
-                <div class="signature-area mt-20 inline-block text-center border-t border-secondary-fixed/30 pt-8 min-w-[250px]">
-                    <p class="font-label-caps text-label-caps text-secondary-fixed mb-12">Hormat Saya,</p>
-                    <p class="font-headline-sm text-headline-sm italic">Remon Pangkalangi S.Pd</p>
-                    <p class="font-body-md text-body-md text-on-primary-container/70 mt-2">Mahasiswa Bimbingan</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 pt-section-gap pb-12">
-        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-            <!-- Decorative Line -->
-            <div class="footer-divider"></div>
-
-            <!-- Main Footer Content -->
-            <div class="grid md:grid-cols-3 gap-10 md:gap-12">
-                <!-- Kolom 1: Brand & Deskripsi -->
-                <div class="text-center md:text-left">
-                    <span class="font-headline-sm text-headline-sm text-primary block mb-3">Ungkapan Terima Kasih</span>
-                    <div class="footer-divider opacity-20 max-w-[100px] mx-auto md:mx-0"></div>
-                    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mt-4">
-                        Sebuah penghormatan tulus kepada para dosen pembimbing yang telah dengan sabar membimbing, mengarahkan, dan menginspirasi perjalanan akademik ini.
+        <main>
+            <!-- Hero Section -->
+            <section class="min-h-[819px] flex flex-col justify-center items-center text-center px-6 py-section-gap max-w-container-max mx-auto" id="introduction">
+                <div class="animate-fade-in-up">
+                    <span class="font-label-caps text-label-caps text-secondary mb-4 block tracking-[0.2em]">DEDIKASI &amp; PENGHARGAAN</span>
+                    <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-8 max-w-3xl mx-auto">
+                        Terima Kasih, Bapak/Ibu Dosen Pembimbing
+                    </h1>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+                        Sebuah bentuk apresiasi atas bimbingan, kesabaran, dan ilmu yang telah diberikan selama perjalanan akademik ini. Tanpa arahan Anda, pencapaian ini tidak akan pernah sama.
                     </p>
-                    <!-- Social Icons -->
-                    <div class="flex justify-center md:justify-start gap-3 mt-6">
-                        <a href="#" class="footer-icon group" aria-label="Email">
-                            <span class="material-symbols-outlined text-[20px] group-hover:text-white">mail</span>
-                        </a>
-                        <a href="#" class="footer-icon group" aria-label="LinkedIn">
-                            <span class="material-symbols-outlined text-[20px] group-hover:text-white">work</span>
-                        </a>
-                        <a href="#" class="footer-icon group" aria-label="Instagram" id="galleryTrigger">
-                            <span class="material-symbols-outlined text-[20px] group-hover:text-white">photo_camera</span>
-                        </a>
-                        <a href="#" class="footer-icon group" aria-label="YouTube">
-                            <span class="material-symbols-outlined text-[20px] group-hover:text-white">smart_display</span>
-                        </a>
+                    <div class="academic-divider mt-12"></div>
+                </div>
+            </section>
+
+            <!-- Supervisor I Section -->
+            <section class="py-section-gap bg-surface-container-low/30" id="supervisor-1">
+                <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                    <div class="grid md:grid-cols-12 gap-12 items-center">
+                        <div class="md:col-span-5 order-2 md:order-1">
+                            <div class="relative p-2 bg-white border border-outline-variant/30 shadow-sm">
+                                <div class="aspect-[3/4] overflow-hidden bg-surface-container">
+                                    <img alt="Dosen Pembimbing I" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://dosen.ptik.unima.ac.id/storage/lecturers/8Utdr4ahAyAStK1gNp6wKkntXfhSs7fqK97FLNRX.png" />
+                                </div>
+                                <div class="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-secondary"></div>
+                            </div>
+                        </div>
+                        <div class="md:col-span-7 order-1 md:order-2">
+                            <span class="font-label-caps text-label-caps text-secondary uppercase mb-2 block">Dosen Pembimbing Utama</span>
+                            <h2 class="font-headline-md text-headline-md text-primary mb-6">Kepada Dosen Pembimbing I</h2>
+                            <h3 class="font-body-lg text-body-lg font-bold text-on-surface mb-8">[Dr. Dra. Christine Takarina Meitty Manoppo M.AP]</h3>
+                            <div class="space-y-6 text-on-surface-variant leading-loose italic font-quote-text text-quote-text border-l-4 border-secondary/30 pl-8 py-2">
+                                "Terima kasih atas bimbingan yang sangat fundamental. Arahan Bapak/Ibu bukan sekadar instruksi teknis, melainkan pembentukan pola pikir kritis yang akan saya bawa seumur hidup. Kesabaran Anda dalam menghadapi keraguan saya adalah hadiah terbesar dalam studi ini."
+                            </div>
+                            <div class="mt-8 flex items-center space-x-2 text-secondary">
+                                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                                <span class="font-label-caps text-label-caps">Mentor &amp; Inisiator</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- Kolom 2: Navigasi Cepat -->
-                <div class="text-center md:text-left">
-                    <h4 class="font-label-caps text-label-caps text-secondary uppercase tracking-wider mb-4">Navigasi</h4>
-                    <ul class="space-y-3">
-                        <li>
-                            <a href="#introduction" class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-300 footer-link inline-block">Pengantar</a>
-                        </li>
-                        <li>
-                            <a href="#supervisor-1" class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-300 footer-link inline-block">Dosen Pembimbing I</a>
-                        </li>
-                        <li>
-                            <a href="#supervisor-2" class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-300 footer-link inline-block">Dosen Pembimbing II</a>
-                        </li>
-                        <li>
-                            <a href="#closing" class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-300 footer-link inline-block">Penutup</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Kolom 3: Informasi & Kontak -->
-                <div class="text-center md:text-left">
-                    <h4 class="font-label-caps text-label-caps text-secondary uppercase tracking-wider mb-4">Informasi</h4>
-                    <ul class="space-y-3">
-                        <li class="flex items-center justify-center md:justify-start gap-3 text-on-surface-variant">
-                            <span class="material-symbols-outlined text-secondary text-[20px]">school</span>
-                            <span class="font-body-md text-body-md">Remon Pangkalangi</span>
-                        </li>
-                        <li class="flex items-center justify-center md:justify-start gap-3 text-on-surface-variant">
-                            <span class="material-symbols-outlined text-secondary text-[20px]">calendar_month</span>
-                            <span class="font-body-md text-body-md">2022 - 2026</span>
-                        </li>
-                        <li class="flex items-center justify-center md:justify-start gap-3 text-on-surface-variant">
-                            <span class="material-symbols-outlined text-secondary text-[20px]">location_on</span>
-                            <span class="font-body-md text-body-md">Universitas Negeri Manado</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Footer Bottom -->
-            <div class="mt-12 pt-8 border-t border-outline-variant/30">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p class="font-body-md text-body-md text-on-surface-variant/70 text-center md:text-left">
-                        © 2026 Ungkapan Terima Kasih. Dibuat dengan penuh hormat dan dedikasi.
+            <!-- Academic Quote / Break -->
+            <section class="py-24 text-center">
+                <div class="max-w-3xl mx-auto px-6">
+                    <span class="material-symbols-outlined text-secondary text-4xl mb-6">format_quote</span>
+                    <p class="font-headline-sm text-headline-sm text-primary italic leading-relaxed">
+                        "Seorang guru yang baik tidak hanya memberikan jawaban, tetapi menanamkan pertanyaan yang akan menuntun siswanya menuju kebenaran."
                     </p>
-                    <div class="flex items-center gap-2">
-                        <span class="material-symbols-outlined text-secondary text-[18px]">favorite</span>
-                        <span class="font-body-md text-body-md text-on-surface-variant/60 text-sm">Dengan sepenuh hati</span>
+                    <div class="academic-divider mt-8"></div>
+                </div>
+            </section>
+
+            <!-- Supervisor II Section -->
+            <section class="py-section-gap" id="supervisor-2">
+                <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                    <div class="grid md:grid-cols-12 gap-12 items-center">
+                        <div class="md:col-span-7 order-2 md:order-1">
+                            <span class="font-label-caps text-label-caps text-secondary uppercase mb-2 block">Dosen Pembimbing Pendamping</span>
+                            <h2 class="font-headline-md text-headline-md text-primary mb-6">Kepada Dosen Pembimbing II</h2>
+                            <h3 class="font-body-lg text-body-lg font-bold text-on-surface mb-8">[Dr. Kebri Kein Mopudy Pajung S.Kom., M.T]</h3>
+                            <div class="space-y-6 text-on-surface-variant leading-loose italic font-quote-text text-quote-text border-r-4 border-secondary/30 pr-8 py-2 text-right">
+                                "Masukan-masukan konstruktif dan dukungan moral yang Anda berikan adalah penyemangat di saat-saat tersulit. Terima kasih telah membantu saya melihat detail yang terlewatkan dan mendorong saya untuk melampaui batas kemampuan saya sendiri."
+                            </div>
+                            <div class="mt-8 flex items-center justify-end space-x-2 text-secondary">
+                                <span class="font-label-caps text-label-caps">Penyemangat &amp; Kritikus Bijak</span>
+                                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">psychology</span>
+                            </div>
+                        </div>
+                        <div class="md:col-span-5 order-1 md:order-2">
+                            <div class="relative p-2 bg-white border border-outline-variant/30 shadow-sm">
+                                <div class="aspect-[3/4] overflow-hidden bg-surface-container">
+                                    <img alt="Dosen Pembimbing II" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://dosen.ptik.unima.ac.id/storage/lecturers/p8SkPQpEHe5aeEhk9ndx4VsWRe4XP6spBs9VkalW.png" />
+                                </div>
+                                <div class="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-secondary"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Closing Section -->
+            <section class="py-section-gap bg-primary-container text-on-primary" id="closing">
+                <div class="max-w-3xl mx-auto px-6 text-center">
+                    <span class="font-label-caps text-label-caps text-secondary-fixed mb-6 block tracking-widest">PENUTUP</span>
+                    <h2 class="font-headline-md text-headline-md mb-8">Sebuah Doa &amp; Harapan</h2>
+                    <p class="font-body-lg text-body-lg text-on-primary-container leading-relaxed mb-16">
+                        Semoga segala ilmu yang telah diberikan menjadi amal jariyah yang tak terputus. Saya berharap dapat meneruskan semangat akademis ini dalam langkah karir saya selanjutnya, membawa integritas yang telah Anda contohkan.
+                    </p>
+                    <div class="signature-area mt-20 inline-block text-center border-t border-secondary-fixed/30 pt-8 min-w-[250px]">
+                        <p class="font-label-caps text-label-caps text-secondary-fixed mb-12">Hormat Saya,</p>
+                        <p class="font-headline-sm text-headline-sm italic">Remon Pangkalangi S.Pd</p>
+                        <p class="font-body-md text-body-md text-on-primary-container/70 mt-2">Mahasiswa Bimbingan</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 pt-section-gap pb-12">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                <div class="footer-divider"></div>
+                <div class="grid md:grid-cols-3 gap-10 md:gap-12">
+                    <div class="text-center md:text-left">
+                        <span class="font-headline-sm text-headline-sm text-primary block mb-3">Ungkapan Terima Kasih</span>
+                        <div class="footer-divider opacity-20 max-w-[100px] mx-auto md:mx-0"></div>
+                        <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mt-4">
+                            Sebuah penghormatan tulus kepada para dosen pembimbing yang telah dengan sabar membimbing, mengarahkan, dan menginspirasi perjalanan akademik ini.
+                        </p>
+                        <div class="flex justify-center md:justify-start gap-3 mt-6">
+                            
+                            <a href="#" class="footer-icon group" aria-label="Instagram" id="galleryTrigger">
+                                <span class="material-symbols-outlined text-[20px] group-hover:text-white">photo_camera</span>
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <div class="text-center md:text-left">
+                        <h4 class="font-label-caps text-label-caps text-secondary uppercase tracking-wider mb-4">Navigasi</h4>
+                        <ul class="space-y-3">
+                            <li><a href="#introduction" class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-300 footer-link inline-block">Pengantar</a></li>
+                            <li><a href="#supervisor-1" class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-300 footer-link inline-block">Dosen Pembimbing I</a></li>
+                            <li><a href="#supervisor-2" class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-300 footer-link inline-block">Dosen Pembimbing II</a></li>
+                            <li><a href="#closing" class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-300 footer-link inline-block">Penutup</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="text-center md:text-left">
+                        <h4 class="font-label-caps text-label-caps text-secondary uppercase tracking-wider mb-4">Informasi</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-center justify-center md:justify-start gap-3 text-on-surface-variant">
+                                <span class="material-symbols-outlined text-secondary text-[20px]">school</span>
+                                <span class="font-body-md text-body-md">Remon Pangkalangi</span>
+                            </li>
+                            <li class="flex items-center justify-center md:justify-start gap-3 text-on-surface-variant">
+                                <span class="material-symbols-outlined text-secondary text-[20px]">calendar_month</span>
+                                <span class="font-body-md text-body-md">2022 - 2026</span>
+                            </li>
+                            <li class="flex items-center justify-center md:justify-start gap-3 text-on-surface-variant">
+                                <span class="material-symbols-outlined text-secondary text-[20px]">location_on</span>
+                                <span class="font-body-md text-body-md">Universitas Negeri Manado</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-12 pt-8 border-t border-outline-variant/30">
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <p class="font-body-md text-body-md text-on-surface-variant/70 text-center md:text-left">
+                            © 2026 Ungkapan Terima Kasih. Dibuat dengan penuh hormat dan dedikasi.
+                        </p>
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-secondary text-[18px]">favorite</span>
+                            <span class="font-body-md text-body-md text-on-surface-variant/60 text-sm">Dengan sepenuh hati</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 
-    <!-- ===== POPUP GALERI FOTO ===== -->
-    <div id="galleryModal" class="gallery-modal hidden">
-        <div class="gallery-overlay" onclick="closeGallery()"></div>
-        <div class="gallery-content">
-            <!-- Tombol Close -->
-            <button class="gallery-close" onclick="closeGallery()">
-                <span class="material-symbols-outlined">close</span>
-            </button>
-
-            <!-- Judul -->
-            <h3 class="gallery-title">📸 Galeri Kenangan</h3>
-
-            <!-- Container Slider -->
-            <div class="gallery-slider-container">
-                <div class="gallery-slider" id="gallerySlider">
-                    <!-- Ganti foto di bawah ini dengan foto Anda -->
-                    <div class="gallery-slide">
-                        <img src="https://picsum.photos/seed/1/800/500" alt="Foto 1" />
-                        <p class="gallery-caption">Momen Bimbingan 1</p>
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="https://picsum.photos/seed/2/800/500" alt="Foto 2" />
-                        <p class="gallery-caption">Momen Bimbingan 2</p>
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="https://picsum.photos/seed/3/800/500" alt="Foto 3" />
-                        <p class="gallery-caption">Momen Bimbingan 3</p>
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="https://picsum.photos/seed/4/800/500" alt="Foto 4" />
-                        <p class="gallery-caption">Momen Bimbingan 4</p>
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="https://picsum.photos/seed/5/800/500" alt="Foto 5" />
-                        <p class="gallery-caption">Momen Bimbingan 5</p>
+        <!-- ===== POPUP GALERI FOTO ===== -->
+        <div id="galleryModal" class="gallery-modal hidden">
+            <div class="gallery-overlay" onclick="closeGallery()"></div>
+            <div class="gallery-content">
+                <button class="gallery-close" onclick="closeGallery()">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+                <h3 class="gallery-title">Galeri Kenangan</h3>
+                <div class="gallery-slider-container">
+                    <div class="gallery-slider" id="gallerySlider">
+                        <div class="gallery-slide">
+                            <img src="https://picsum.photos/seed/1/800/500" alt="Foto 1" />
+                            <p class="gallery-caption">Momen Bimbingan 1</p>
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="https://picsum.photos/seed/2/800/500" alt="Foto 2" />
+                            <p class="gallery-caption">Momen Bimbingan 2</p>
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="https://picsum.photos/seed/3/800/500" alt="Foto 3" />
+                            <p class="gallery-caption">Momen Bimbingan 3</p>
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="https://picsum.photos/seed/4/800/500" alt="Foto 4" />
+                            <p class="gallery-caption">Momen Bimbingan 4</p>
+                        </div>
+                        <div class="gallery-slide">
+                            <img src="https://picsum.photos/seed/5/800/500" alt="Foto 5" />
+                            <p class="gallery-caption">Momen Bimbingan 5</p>
+                        </div>
                     </div>
                 </div>
+                <button class="gallery-nav gallery-prev" onclick="prevSlide()">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                </button>
+                <button class="gallery-nav gallery-next" onclick="nextSlide()">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+                <div class="gallery-dots" id="galleryDots"></div>
             </div>
-
-            <!-- Tombol Navigasi -->
-            <button class="gallery-nav gallery-prev" onclick="prevSlide()">
-                <span class="material-symbols-outlined">chevron_left</span>
-            </button>
-            <button class="gallery-nav gallery-next" onclick="nextSlide()">
-                <span class="material-symbols-outlined">chevron_right</span>
-            </button>
-
-            <!-- Indikator Dot -->
-            <div class="gallery-dots" id="galleryDots"></div>
         </div>
     </div>
 
     <!-- JavaScript -->
-    <script src="js/app.js"></script>
+    <script  src="js/app.js"> </script>
+  
+
 </body>
-</html>        
+</html>
