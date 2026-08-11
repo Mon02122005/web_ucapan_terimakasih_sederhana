@@ -4,7 +4,7 @@
   "description": "Website ucapan terima kasih untuk dosen pembimbing",
   "main": "index.html",
   "scripts": {
-    "build": "node ./node_modules/tailwindcss/lib/cli.js -i ./src/input.css -o ./dist/output.css --minify && copy index.html dist\\index.html",
+    "build": "node ./node_modules/tailwindcss/lib/cli.js -i ./src/input.css -o ./dist/output.css --minify && node -e \"require('fs').copyFileSync('index.html', 'dist/index.html')\"",
     "watch": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
   },
   "devDependencies": {
