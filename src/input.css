@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ===== LOADING SCREEN ===== */
+/* ==== LOADING SCREEN ==== */
 #loadingScreen {
   position: fixed;
   top: 0;
