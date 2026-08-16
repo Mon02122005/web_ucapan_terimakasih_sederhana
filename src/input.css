@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 /* ===== LOADING SCREEN ===== */
 #loadingScreen {
   position: fixed;
@@ -59,7 +58,6 @@
   text-transform: uppercase;
 }
 
-/* Progress Bar */
 .loading-progress-container {
   width: 280px;
   max-width: 80%;
@@ -425,15 +423,6 @@ body {
   border-radius: 6px;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 @keyframes slideUp {
   from {
     opacity: 0;
@@ -479,4 +468,48 @@ body {
     right: 12px;
     font-size: 22px;
   }
+}
+
+/* ===== MUSIK PLAYER ===== */
+#musicControl {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 50px;
+  padding: 8px 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(119, 90, 25, 0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#musicControl:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 32px rgba(119, 90, 25, 0.25);
+}
+
+#musicControl .music-text {
+  font-family: "Manrope", sans-serif;
+  font-size: 11px;
+  color: #43474d;
+  font-weight: 500;
+}
+
+@keyframes spinMusic {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#musicControl .spinning {
+  animation: spinMusic 3s linear infinite;
 }

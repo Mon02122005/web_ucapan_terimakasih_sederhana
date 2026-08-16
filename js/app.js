@@ -1,17 +1,15 @@
-// ===== LOADING SCREEN MENUNGGU SEMUA KONTEN =====
+// ===== LOADING SCREEN =====
 window.addEventListener("load", function () {
   const loadingScreen = document.getElementById("loadingScreen");
   const mainContent = document.getElementById("mainContent");
   const progressBar = document.getElementById("progressBar");
   const progressPercent = document.getElementById("progressPercent");
 
-  // Kumpulkan semua gambar di halaman
   const allImages = document.querySelectorAll("img");
   const totalImages = allImages.length;
   let loadedImages = 0;
   let isComplete = false;
 
-  // Update progress
   function updateProgress() {
     let percent = 0;
     if (totalImages === 0) {
@@ -23,53 +21,45 @@ window.addEventListener("load", function () {
     progressBar.style.width = percent + "%";
     progressPercent.textContent = percent + "%";
 
-    // Jika semua gambar sudah selesai dimuat
     if (percent === 100 && !isComplete) {
       isComplete = true;
-      // Tampilkan konten dengan fade in
       mainContent.style.display = "block";
       setTimeout(function () {
         mainContent.style.opacity = "1";
       }, 50);
 
-      // Hilangkan loading screen
       setTimeout(function () {
         loadingScreen.classList.add("hidden");
         document.body.style.overflow = "";
+        // Panggil musik setelah loading selesai
+        playMusic();
       }, 400);
     }
   }
 
-  // Jika tidak ada gambar
   if (totalImages === 0) {
     updateProgress();
     return;
   }
 
-  // Cek setiap gambar
   allImages.forEach(function (img) {
-    // Jika gambar sudah selesai dimuat dari cache
     if (img.complete) {
       loadedImages++;
       updateProgress();
     } else {
-      // Tunggu gambar selesai dimuat
       img.addEventListener("load", function () {
         loadedImages++;
         updateProgress();
       });
       img.addEventListener("error", function () {
-        // Tetap hitung meskipun error (biar tidak stuck)
         loadedImages++;
         updateProgress();
       });
     }
   });
 
-  // Fallback: jika ada gambar yang tidak trigger event
   setTimeout(function () {
     if (!isComplete) {
-      // Hitung ulang gambar yang sudah complete
       let actualLoaded = 0;
       allImages.forEach(function (img) {
         if (img.complete) actualLoaded++;
@@ -77,8 +67,64 @@ window.addEventListener("load", function () {
       loadedImages = actualLoaded;
       updateProgress();
     }
-  }, 3000);
+  }, 5000);
 });
+
+// ===== MUSIK OTOMATIS =====
+const bgMusic = document.getElementById("bgMusic");
+const musicIcon = document.getElementById("musicIcon");
+let isMusicPlaying = false;
+
+// Fungsi untuk memutar musik
+function playMusic() {
+  bgMusic
+    .play()
+    .then(() => {
+      isMusicPlaying = true;
+      musicIcon.textContent = "music_note";
+      musicIcon.classList.add("spinning");
+      console.log("🎵 Musik berhasil diputar");
+    })
+    .catch((error) => {
+      console.log("⏸️ Auto-play ditolak browser:", error);
+      // Jika gagal, coba saat user klik di mana saja
+      document.addEventListener("click", function playOnClick() {
+        bgMusic
+          .play()
+          .then(() => {
+            isMusicPlaying = true;
+            musicIcon.textContent = "music_note";
+            musicIcon.classList.add("spinning");
+            console.log("🎵 Musik berhasil diputar setelah klik");
+          })
+          .catch(() => {});
+        document.removeEventListener("click", playOnClick);
+      });
+    });
+}
+
+// Fungsi toggle (untuk tombol kontrol)
+function toggleMusic() {
+  if (isMusicPlaying) {
+    bgMusic.pause();
+    isMusicPlaying = false;
+    musicIcon.textContent = "music_off";
+    musicIcon.classList.remove("spinning");
+  } else {
+    bgMusic.play();
+    isMusicPlaying = true;
+    musicIcon.textContent = "music_note";
+    musicIcon.classList.add("spinning");
+  }
+}
+
+// Coba putar musik saat halaman dimuat
+document.addEventListener("DOMContentLoaded", function () {
+  setTimeout(playMusic, 500);
+});
+
+// Expose toggleMusic ke global
+window.toggleMusic = toggleMusic;
 
 // ===== HAMBURGER MENU =====
 const menuToggle = document.getElementById("menuToggle");
